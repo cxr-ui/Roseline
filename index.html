@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<meta name="theme-color" content="#05070d" />
+<meta name="description" content="Roseline — LANTERN study companion" />
+<title>Roseline · LANTERN</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <header id="topbar">
+    <div id="brand">
+      <span id="brand-mark">◈</span>
+      <span id="brand-text">ROSELINE <span id="brand-sub">· LANTERN</span></span>
+    </div>
+    <button id="session-btn" title="Start a focused study session">
+      <span id="session-dot"></span>
+      <span id="session-label">Start session</span>
+    </button>
+    <button id="settings-btn" title="Settings" aria-label="Settings">⚙</button>
+  </header>
+
+  <section id="stage">
+    <canvas id="avatar-canvas"></canvas>
+    <div id="expression-tag">focused</div>
+    <div id="nudge-banner" class="hidden">
+      <p id="nudge-text"></p>
+      <div class="nudge-actions">
+        <button id="nudge-yes">Let's go</button>
+        <button id="nudge-dismiss">Not now</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="chat">
+    <div id="messages" role="log" aria-live="polite"></div>
+  </section>
+
+  <footer id="composer">
+    <button id="mic-btn" title="Voice input" aria-label="Voice input">🎙</button>
+    <textarea id="input" rows="1" placeholder="Ask Roseline about LANTERN, DSA, AI…"></textarea>
+    <button id="send-btn" title="Send" aria-label="Send">➤</button>
+  </footer>
+
+</div>
+
+<div id="settings-modal" class="hidden">
+  <div class="modal-card">
+    <h2>Settings</h2>
+
+    <label for="api-key-input">Claude API key</label>
+    <input id="api-key-input" type="password" autocomplete="off" placeholder="sk-ant-…" />
+    <p class="hint">Stored only on this device (localStorage). Never sent anywhere except Anthropic's API.</p>
+
+    <label for="model-input">Model</label>
+    <input id="model-input" type="text" placeholder="claude-sonnet-5" />
+
+    <label for="voice-toggle" class="row">
+      <span>Speak replies aloud</span>
+      <input id="voice-toggle" type="checkbox" />
+    </label>
+
+    <label for="nudge-toggle" class="row">
+      <span>Study nudges during sessions</span>
+      <input id="nudge-toggle" type="checkbox" checked />
+    </label>
+
+    <div class="modal-actions">
+      <button id="settings-clear">Clear chat history</button>
+      <button id="settings-save">Save</button>
+    </div>
+    <button id="settings-close" class="close-x" aria-label="Close">✕</button>
+  </div>
+</div>
+
+<script src="avatar.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
